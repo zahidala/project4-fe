@@ -10,7 +10,7 @@ const options = {
     tr_longitude: '109.149359',
   },
   headers: {
-    'X-RapidAPI-Key': 'd4f8324d77msh7958ac62cd1ccc9p121891jsnba1da99c16da',
+    'X-RapidAPI-Key': process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
   }
 };
