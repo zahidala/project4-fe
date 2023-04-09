@@ -1,7 +1,11 @@
 import React from 'react'
+import { Form, }
 
 export default function List() {
   return (
-    <h1>List</h1>
+    <div className='list1'>
+      <
+
+    </div>
   )
 }
