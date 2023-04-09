@@ -12,20 +12,22 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstr
 
 export default function App() {
   return (
-    <>
-    <>
-      {/* <CssBaseline />
-      {/* <Header /> */}
-      <Grid container spacing={3} style={{ width: '100%' }}>
-        <Grid item xs={12} md={4}>
-          <List />
-        </Grid>
-        <Grid item xs={12} md={8}>
-          <Map />
-        </Grid>
-      </Grid>
-    </>
-    <>
+    
+    // <>
+    //   <CssBaseline>
+    //      <Header /> 
+    //   <Grid container spacing={3} style={{ width: '100%' }}>
+    //     <Grid item xs={12} md={4}>
+    //       <List />
+    //     </Grid>
+    //     <Grid item xs={12} md={8}>
+    //       <Map />
+    //     </Grid>
+    //   </Grid>
+    //   </CssBaseline>
+    // </>
+
+  <>
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
       <Navbar.Brand href="#">Trip Planner</Navbar.Brand>
@@ -80,7 +82,9 @@ export default function App() {
   <div>
     <Map />
   </div>
+
+ 
   </>
-  </>
+
   )
 }
