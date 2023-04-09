@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 } */
+
+.color-nav {
+  background-color: white;
+}
+
+.mask {
+  background-color: rgba(34, 34, 34, 0.497);
+  height: 100vh;
+}
+
+#intro {
+  background-image: url(https://mdbcdn.b-cdn.net/img/new/fluid/city/113.jpg);
+  height: 100vh;
+}
