@@ -101,20 +101,16 @@ export default function App() {
   </div>
 
   <div>
-<<<<<<< HEAD
-    <Map />
-=======
-    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
-<<<<<<< HEAD
+
+   
+
+    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} />
+
     <Container>
       <h1><List places={places} /></h1>
     
     </Container>
-    
-=======
-    <List />
->>>>>>> 0c7fc2216f2a77019a46c40f6be654e8d40f3750
->>>>>>> dfd9a9b146c2117696e50803be70eeead1b2a8f3
+
   </div>
 
  
