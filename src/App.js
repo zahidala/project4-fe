@@ -6,8 +6,12 @@ import './App.css'
 // import Header from './Components/Header/Header'
 import List from './Components/List/List'
 import Map from './Components/Map/Map'
+import Signup from './user/Signup'
+import Signin from './user/Signin'
+import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
+import Axios from 'axios'
+import jwt_decode from 'jwt-decode'
 
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { getPlacesData } from './api';
 
@@ -15,6 +19,8 @@ export default function App() {
   const [places, setPlaces] = useState([])
   const [coordinates, setCoordinates] = useState({})
   const [bounds, setBounds] = useState({})
+  const [isAuth, setIsAuth]= useState(false)
+  const[user, setUser] = useState({});
   // const [autocomplete, setAutocomplete] = useState(null)
 
   useEffect(() => {
@@ -32,6 +38,72 @@ export default function App() {
       setPlaces(data)
     })
   }, [coordinates, bounds])
+
+  useEffect(()=> {
+    let token = localStorage.getItem("token")
+    if(token !=null){
+      let user = jwt_decode(token)
+
+      if(user){
+        setIsAuth(true)
+        setUser(user)
+      }
+      else if(!user){
+        localStorage.removeItem("token")
+        setIsAuth(false)
+      }
+    }
+
+  })
+
+  const registerHandler = (user) =>{
+    Axios.post("auth/signup", user)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  }
+  const loginHandler = (cred) =>{
+    Axios.post("auth/signin", cred)
+    .then(res => {
+      console.log(res.data.token)
+      // save the token into local storage
+      let token = res.data.token
+      if(token!=null){
+        localStorage.setItem("token", token)
+        let user = jwt_decode(token);
+        setIsAuth(true)
+      }
+    })
+    .catch(err =>{
+      console.log(err)
+      setIsAuth(false)
+    })
+  }
+
+  const onLogOutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token")
+    setIsAuth(false)
+    setUser(null)
+
+  }
+  
+  const navbar = isAuth ?(
+    <>
+     <Nav.Link> <Link to="/">Home</Link></Nav.Link> &nbsp; 
+     <Nav.Link> <Link to="/logout" onClick={onLogOutHandler}>Logout</Link> </Nav.Link>&nbsp;
+    </>
+  )
+  :
+  (
+    <>
+     <Nav.Link><Link to="/signup">Signup</Link></Nav.Link>&nbsp;
+     <Nav.Link><Link to="/signin">Signin</Link></Nav.Link> &nbsp;
+  </>
+  ) 
 
   // const onLoad = (autoC) => setAutocomplete(autoC)
   // console.log('on', onLoad)
@@ -67,19 +139,15 @@ export default function App() {
         <Router>
           
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-            
-              <Nav.Link to='/'>Home</Nav.Link>
-              <Nav.Link to="/signup">Sign Up </Nav.Link>
-              <Nav.Link to="/signin">Sign In</Nav.Link>
-              <Nav.Link to="/logout" >Sign Out</Nav.Link>
-            
+          {navbar}
             </Nav>
           <div>
             <Routes>
-              <Route path="/" ></Route>
-              <Route path="/signup" ></Route>
-              <Route path="/signin" ></Route>
-            </Routes>
+              <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
+              <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
+              <Route path="/signin" element={<Signin login={loginHandler}></Signin>}>
+              </Route>
+            </Routes>            
           </div>
 
         </Router>
