@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { Autocomplete } from '@react-google-maps/api'
 import {CssBaseline, Grid} from '@material-ui/core'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
@@ -15,6 +15,7 @@ export default function App() {
   const [places, setPlaces] = useState([])
   const [coordinates, setCoordinates] = useState({})
   const [bounds, setBounds] = useState({})
+  // const [autocomplete, setAutocomplete] = useState(null)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {
@@ -31,6 +32,14 @@ export default function App() {
       setPlaces(data)
     })
   }, [coordinates, bounds])
+
+  // const onLoad = (autoC) => setAutocomplete(autoC)
+  // console.log('on', onLoad)
+  // const onPlaceChanged = () => {
+  //   const lat = autocomplete.getPlace().geometry.location.lat()
+  //   const lng = autocomplete.getPlace().geometry.location.lng()
+  //   setCoordinates({ lat, lng})
+  // }
 
   return (
     
@@ -93,7 +102,9 @@ export default function App() {
               className="me-2"
               aria-label="Search"
             />
+            {/* <Autocomplete> */}
             <Button variant="outline-success">Search</Button>
+            {/* </Autocomplete> */}
           </Form>
         </div>
       </div>
