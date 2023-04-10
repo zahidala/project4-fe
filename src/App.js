@@ -102,12 +102,12 @@ export default function App() {
 
   <div>
 {/* <<<<<<< HEAD */}
-    <Map />
+    
 {/* ======= */}
-    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
+    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} places={places}/>
 {/* <<<<<<< HEAD */}
     <Container>
-      <h1><List places={places} /></h1>
+      <List places={places} />
     
     </Container>
     
