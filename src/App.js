@@ -93,31 +93,32 @@ export default function App() {
   // }
 
   return (
-  <>
+    <>
+    <Router>
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
       <Navbar.Brand href="#">Trip Planner</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
       
-        <Router>
+        
           
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
           {navbar}
-            </nav>
-          <div>
+          </nav>
+
+        
+        </Navbar.Collapse>
+        </Container>
+        </Navbar>
+        <Header />
+        <div>
             <Routes>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
             </Routes>            
           </div>
-
         </Router>
-        </Navbar.Collapse>
-        </Container>
-        </Navbar>
-
-        <Header />
         </>
 
        
