@@ -94,8 +94,12 @@ export default function App() {
   </div>
 
   <div>
+<<<<<<< HEAD
+    <Map />
+=======
     <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
     <List />
+>>>>>>> 0c7fc2216f2a77019a46c40f6be654e8d40f3750
   </div>
 
  
