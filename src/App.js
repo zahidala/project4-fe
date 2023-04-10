@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
 import {CssBaseline, Grid} from '@material-ui/core'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
@@ -8,9 +9,22 @@ import Map from './Components/Map/Map'
 
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
+import { getPlacesData } from './api';
 
 export default function App() {
+  const [places, setPlaces] = useState([])
+  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 })
+  const [bounds, setBounds] = useState(null)
+
+  useEffect(() => {
+    console.log(coordinates, bounds)
+    getPlacesData()
+    .then((data) => {
+      console.log(data)
+      setPlaces(data)
+    })
+  }, [])
+
   return (
     
     // <>
@@ -80,7 +94,12 @@ export default function App() {
   </div>
 
   <div>
+<<<<<<< HEAD
     <Map />
+=======
+    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
+    <List />
+>>>>>>> 0c7fc2216f2a77019a46c40f6be654e8d40f3750
   </div>
 
  
