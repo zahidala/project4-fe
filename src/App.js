@@ -89,7 +89,7 @@ export default function App() {
     <Router>
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Navbar.Brand href="#">Trip Planner</Navbar.Brand>
+      <Navbar.Brand href="/">Trip Planner</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
       
@@ -100,9 +100,10 @@ export default function App() {
         </Navbar.Collapse>
         </Container>
         </Navbar>
-        <Header />
+        
         <div>
             <Routes>
+              <Route path="/" element={<Header />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
             </Routes>            
