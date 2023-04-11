@@ -16,13 +16,8 @@ import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
-<<<<<<< HEAD
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/ViewDetails/review'
-=======
-import ViewDetails from './Components/ViewDetails/ViewDetails';
-
->>>>>>> c298f16baf1f22655de5bd89595447e8b6d977fc
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
@@ -179,14 +174,11 @@ export default function App() {
               <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
-<<<<<<< HEAD
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route path="/plan" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
 
-=======
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
->>>>>>> c298f16baf1f22655de5bd89595447e8b6d977fc
             </Routes>            
           </div>
         {/* </Router> */}
