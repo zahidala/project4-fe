@@ -16,8 +16,11 @@ import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/ViewDetails/review'
+import ViewDetails from './Components/ViewDetails/ViewDetails';
+
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
@@ -177,8 +180,8 @@ export default function App() {
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route path="/plan" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
-
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
+
             </Routes>            
           </div>
         {/* </Router> */}
