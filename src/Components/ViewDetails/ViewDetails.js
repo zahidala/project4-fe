@@ -3,6 +3,9 @@ import React from 'react'
 
 export default function ViewDetails() {
   return (
-    <div>ViewDetails</div>
+    <>
+    <h1>meow</h1>
+    <div>{this.props.place.name}</div>
+    </>
   )
 }
