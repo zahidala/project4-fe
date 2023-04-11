@@ -89,7 +89,7 @@ export default function App() {
     <Router>
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Navbar.Brand href="/">Trip Planner</Navbar.Brand>
+      <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
       
