@@ -7,6 +7,7 @@ import Map from './Components/Map/Map'
 import Signup from './user/Signup'
 import Signin from './user/Signin'
 import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
@@ -35,10 +36,13 @@ export default function App() {
 
   })
 
+  const navigate = useNavigate();
+
   const registerHandler = (user) =>{
     Axios.post("auth/signup", user)
     .then(res => {
       console.log(res)
+      navigate("/")
     })
     .catch(err =>{
       console.log(err)
@@ -55,6 +59,7 @@ export default function App() {
         let user = jwt_decode(token);
         setIsAuth(true)
         setUser(user)
+        navigate("/");
       }
     })
     .catch(err =>{
@@ -86,30 +91,19 @@ export default function App() {
   </>
   ) 
 
-  // const onLoad = (autoC) => setAutocomplete(autoC)
-  // console.log('on', onLoad)
-  // const onPlaceChanged = () => {
-  //   const lat = autocomplete.getPlace().geometry.location.lat()
-  //   const lng = autocomplete.getPlace().geometry.location.lng()
-  //   setCoordinates({ lat, lng})
-  // }
-
   return (
     <>
-    <Router>
+    {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Navbar.Brand href="/">Trip Planner</Navbar.Brand>
+      <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
       
-        
-          
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
           {navbar}
           </nav>
 
-        
         </Navbar.Collapse>
         </Container>
         </Navbar>
@@ -122,7 +116,7 @@ export default function App() {
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
             </Routes>            
           </div>
-        </Router>
+        {/* </Router> */}
         </>
 
        

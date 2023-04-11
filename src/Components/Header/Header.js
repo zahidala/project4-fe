@@ -11,10 +11,24 @@ import { getPlacesData } from '../../api';
 
 export default function Header() {
     const [places, setPlaces] = useState([])
-  const [coordinates, setCoordinates] = useState({})
-  const [bounds, setBounds] = useState({})
+    const [coordinates, setCoordinates] = useState({})
+    const [bounds, setBounds] = useState({})
+    const [childClicked, setChildClicked] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+
+    const [type, setType] = useState('restaurants')
+    const [rating, setRating] = useState('')
+
   
   // const [autocomplete, setAutocomplete] = useState(null)
+
+  // const onLoad = (autoC) => setAutocomplete(autoC)
+  // console.log('on', onLoad)
+  // const onPlaceChanged = () => {
+  //   const lat = autocomplete.getPlace().geometry.location.lat()
+  //   const lng = autocomplete.getPlace().geometry.location.lng()
+  //   setCoordinates({ lat, lng})
+  // }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {
@@ -24,13 +38,15 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    console.log(coordinates, bounds)
-    getPlacesData(bounds.sw, bounds.ne)
+    setIsLoading(true)
+
+    getPlacesData(type, bounds.sw, bounds.ne)
     .then((data) => {
       console.log(data)
       setPlaces(data)
+      setIsLoading(false)
     })
-  }, [coordinates, bounds])
+  }, [type, coordinates, bounds])
 
   return (
     <>
@@ -58,9 +74,23 @@ export default function Header() {
   </div>
 
   <div>
-    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} places={places}/>
+    <Map 
+    setCoordinates={setCoordinates} 
+    setBounds={setBounds} 
+    coordinates={coordinates} 
+    places={places}
+    setChildClicked={setChildClicked}
+    />
     <Container>
-      <List places={places} />
+      <List 
+      places={places}
+      childClicked={childClicked}
+      isLoading={isLoading}
+      type={type}
+      setType={setType}
+      rating={rating}
+      setRating={setRating}
+       />
     </Container>
   </div>
   </>

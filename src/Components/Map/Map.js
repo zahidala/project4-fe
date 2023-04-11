@@ -4,23 +4,13 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import Rating from '@material-ui/lab'
 
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-
-
+// import mapStyles from '../../mapStyles';
 import useStyles from './styles'
-// const containerStyle = {
-//   width: '400px',
-//   height: '400px'
-// };
 
-// const center = {
-//   lat: -3.745,
-//   lng: -38.523
-// };
-
-export default function Map({ setCoordinates, setBounds, coordinates, places }) {
+export default function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }) {
   const classes = useStyles()
   const isDesktop = useMediaQuery('(min-width:600px)')
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact 
@@ -35,7 +25,7 @@ export default function Map({ setCoordinates, setBounds, coordinates, places }) 
         setCoordinates({ lat: e.center.lat, lng: e.center.lng})
         setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
       }}
-      onChildClick={''}
+      onChildClick={(child) => setChildClicked(child)}
       >
         {places?.map((place, i) => (
           <div

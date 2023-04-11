@@ -4,8 +4,9 @@ import { Chip } from '@material-ui/core'
 import {BrowserRouter as Router,Routes,Route, Link, useNavigate} from 'react-router-dom'
 import ViewDetails from '../ViewDetails/ViewDetails'
 
-export default function PlaceDetails({ place }) {
+export default function PlaceDetails({ place, selected, refProp }) {
   console.log(place)
+
 
   const navigate = useNavigate()
 
@@ -21,6 +22,9 @@ export default function PlaceDetails({ place }) {
   //   navigate(`/viewdetails/${place.location_id}`)
   // }
   
+
+  if (selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+
   return (
     <Card elevation={6}>
       <Card.Img style={{ height: 350 }} src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}/>
