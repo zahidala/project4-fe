@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlacesData, getWeatherData } from './api';
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import Header from './Components/Header/Header'
@@ -14,9 +13,7 @@ import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
-
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/ViewDetails/review'
 import ViewDetails from './Components/ViewDetails/ViewDetails';
@@ -188,7 +185,7 @@ export default function App() {
 
         <CssBaseline />
      
-      <Grid container spacing={3} style={{ width: '100%' }}>
+      {/* <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
           <List
             isLoading={isLoading}
@@ -210,7 +207,7 @@ export default function App() {
             weatherData={weatherData}
           />
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   )
 }
