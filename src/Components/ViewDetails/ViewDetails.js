@@ -55,7 +55,7 @@ export default function ViewDetails() {
       <p>Description: {place.description}</p>
       <p>Phone: {place.phone}</p>
       <p>Website: <a href={place.website} target="_blank" rel="noreferrer">{place.website}</a></p>
-      <p>Price: {place.price_level}</p>
+      <p>Price: {place.price}</p>
       <p>Ranking: {place.ranking}</p>
       <p>Rating: {place.rating}</p>
       <p>Reviews: {place.num_reviews}</p>
