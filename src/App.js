@@ -18,7 +18,7 @@ import jwt_decode from 'jwt-decode'
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
-import ReviewCreateForm from './Components/ViewDetails/review'
+import ReviewCreateForm from './Components/reviews/ReviewCreateForm'
 import ViewDetails from './Components/ViewDetails/ViewDetails';
 
 
@@ -90,7 +90,7 @@ export default function App() {
      <Link to="/">Home</Link> &nbsp; 
      <Link to="/calendar">MyCalendar</Link> &nbsp; 
      <Link to="/plan">Plan</Link> &nbsp; 
-     <Link to="/review">review</Link> &nbsp; 
+     <Link to="/review">Review</Link> &nbsp; 
      <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
     </>
   )

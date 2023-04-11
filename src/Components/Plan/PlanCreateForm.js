@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Container, Form, Button} from 'react-bootstrap'
-
+import './PlanCreateForm'
 
 export default function PlanCreateForm(props) {
     const [newPlan, setNewPlan] = useState({})
