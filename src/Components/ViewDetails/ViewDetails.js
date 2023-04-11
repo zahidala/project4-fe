@@ -47,6 +47,7 @@ export default function ViewDetails() {
   }
 
   return (
+
     <div className="view-details">
       <h1>{place.name}</h1>
       <img src={place.photo.images.original.url} alt={place.name} className="place-image" />
@@ -63,4 +64,5 @@ export default function ViewDetails() {
       <p>Category: {place.category.name}</p>
     </div>
   );
+
 }
