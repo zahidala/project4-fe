@@ -4,8 +4,6 @@ import { getPlacesData, getWeatherData } from './api';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import Header from './Components/Header/Header'
-import List from './Components/List/List'
-import Map from './Components/Map/Map'
 import Signup from './user/Signup'
 import Signin from './user/Signin'
 import MyCalendar from './Components/Plan/MyCalendar';
@@ -15,7 +13,7 @@ import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
-import ReviewCreateForm from './Components/ViewDetails/review'
+import ReviewCreateForm from './Components/reviews/ReviewCreateForm'
 import ViewDetails from './Components/ViewDetails/ViewDetails';
 
 
@@ -87,8 +85,9 @@ export default function App() {
      <Link to="/">Home</Link> &nbsp; 
      <Link to="/calendar">MyCalendar</Link> &nbsp; 
      <Link to="/plan">Plan</Link> &nbsp; 
-     <Link to="/review">review</Link> &nbsp; 
+     <Link to="/review">Review</Link> &nbsp; 
      <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
+     <Link to="/header">header</Link>
     </>
   )
   :
@@ -114,34 +113,34 @@ export default function App() {
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      setCoords({ lat: latitude, lng: longitude });
-    });
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+  //     setCoords({ lat: latitude, lng: longitude });
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    const filtered = places.filter((place) => Number(place.rating) > rating);
+  // useEffect(() => {
+  //   const filtered = places.filter((place) => Number(place.rating) > rating);
 
-    setFilteredPlaces(filtered);
-  }, [rating]);
+  //   setFilteredPlaces(filtered);
+  // }, [rating]);
 
-  useEffect(() => {
-    if (bounds) {
-      setIsLoading(true);
+  // useEffect(() => {
+  //   if (bounds) {
+  //     setIsLoading(true);
 
-      getWeatherData(coords.lat, coords.lng)
-        .then((data) => setWeatherData(data));
+  //     getWeatherData(coords.lat, coords.lng)
+  //       .then((data) => setWeatherData(data));
 
-      getPlacesData(type, bounds.sw, bounds.ne)
-        .then((data) => {
-          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-          setFilteredPlaces([]);
-          setRating('');
-          setIsLoading(false);
-        });
-    }
-  }, [bounds, type]);
+  //     getPlacesData(type, bounds.sw, bounds.ne)
+  //       .then((data) => {
+  //         setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+  //         setFilteredPlaces([]);
+  //         setRating('');
+  //         setIsLoading(false);
+  //       });
+  //   }
+  // }, [bounds, type]);
 
   const onLoad = (autoC) => setAutocomplete(autoC);
 
@@ -160,23 +159,22 @@ export default function App() {
       <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-      
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
           {navbar}
           </nav>
-
         </Navbar.Collapse>
         </Container>
         </Navbar>
         
         <div>
             <Routes>
-              <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route>
+              {/* <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route> */}
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route path="/plan" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
+              <Route path="/header" element={<Header onPlaceChanged={onPlaceChanged} onLoad={onLoad}/>}></Route>
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
 
             </Routes>            
