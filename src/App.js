@@ -6,12 +6,14 @@ import List from './Components/List/List'
 import Map from './Components/Map/Map'
 import Signup from './user/Signup'
 import Signin from './user/Signin'
+import MyCalendar from './Components/Plan/MyCalendar';
 import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
 import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
+import PlanCreateForm from './Components/Plan/PlanCreateForm';
+import ReviewCreateForm from './Components/ViewDetails/review'
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
@@ -73,6 +75,9 @@ export default function App() {
   const navbar = isAuth ?(
     <>
      <Link to="/">Home</Link> &nbsp; 
+     <Link to="/calendar">MyCalendar</Link> &nbsp; 
+     <Link to="/plan">Plan</Link> &nbsp; 
+     <Link to="/review">review</Link> &nbsp; 
      <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
     </>
   )
@@ -106,6 +111,10 @@ export default function App() {
               <Route path="/" element={<Header />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
+              <Route path="/calendar" element={<MyCalendar/>}></Route>
+              <Route path="/plan" element={<PlanCreateForm/>}></Route>
+              <Route path="/review" element={<ReviewCreateForm/>}></Route>
+
             </Routes>            
           </div>
         </Router>
