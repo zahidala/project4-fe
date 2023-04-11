@@ -1,0 +1,33 @@
+.view-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .view-details h1 {
+    margin-bottom: 20px;
+  }
+  
+  .view-details p {
+    margin-bottom: 10px;
+  }
+  
+  .view-details a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .view-details a:hover {
+    text-decoration: underline;
+  }
+  
+  .place-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
