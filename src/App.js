@@ -12,6 +12,7 @@ import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import ViewDetails from './Components/ViewDetails/ViewDetails';
 
 
 export default function App() {
@@ -86,6 +87,7 @@ export default function App() {
     <>
      <Link to="/signup">Signup</Link>&nbsp;
      <Link to="/signin">Signin</Link> &nbsp;
+     
   </>
   ) 
 
@@ -111,6 +113,7 @@ export default function App() {
               <Route path="/" element={<Header />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
+              <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
             </Routes>            
           </div>
         {/* </Router> */}

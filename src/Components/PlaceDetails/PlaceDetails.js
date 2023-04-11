@@ -1,9 +1,27 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { Chip } from '@material-ui/core'
+import {BrowserRouter as Router,Routes,Route, Link, useNavigate} from 'react-router-dom'
+import ViewDetails from '../ViewDetails/ViewDetails'
 
 export default function PlaceDetails({ place, selected, refProp }) {
   console.log(place)
+
+
+  const navigate = useNavigate()
+
+  // To view the details of each place
+  const navigateToDetails = (event) => {
+    let id = event.currentTarget.id
+    console.log(id)
+    navigate(`/viewdetails/${place.location_id}` )
+  }
+
+
+  // const navigateToDetails = ()  =>{
+  //   navigate(`/viewdetails/${place.location_id}`)
+  // }
+  
 
   if (selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
 
@@ -19,7 +37,8 @@ export default function PlaceDetails({ place, selected, refProp }) {
         {/* {place?.cuisine?.map(({ name }) => {
         <Card.Text key={name} size="small" label={name}></Card.Text>
       })} */}
-      <Button>View Details</Button>
+
+      <Button id={place.location_id} onClick={navigateToDetails}> View Details</Button>
       </Card.Body>
       
     </Card>
