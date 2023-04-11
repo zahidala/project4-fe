@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select, Menu } from '@material-ui/core'
 
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
@@ -7,11 +7,17 @@ import useStyles from './styles'
 
 import {Form, Container} from 'react-bootstrap'
 
-export default function List({ places }) {
+export default function List({ places, childClicked, isLoading }) {
   const classes = useStyles()
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState('')
-  
+  const [elRefs, setElRefs] = useState([])
+
+  useEffect(() => {
+    const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef())
+
+    setElRefs(refs)
+  }, [places])
 
   return (
     // <div className={classes.container}>
@@ -43,7 +49,13 @@ export default function List({ places }) {
     //     ))}
     //   </Grid>
     // </div>
-    
+    <div>
+      {isLoading ? (
+        <div className={classes.loading}>
+          <CircularProgress size="5rem" />
+        </div>
+      ) : (
+        <>
     <div className='listdiv'>
       <Form.Select aria-label="Default select example" value={type} onchange={(e) => setType(e.target.value)}>
       <option value="restaurants">Restaurants</option>
@@ -57,16 +69,19 @@ export default function List({ places }) {
       <option value={4}>Above 4.0</option>
       <option value={4.5}>Above 4.5</option>
     </Form.Select>
+    </div>
 
     <Container spacing={3} className={classes.list}>
          {places?.map((place, i) => (
            <Container key={i} xs={12}>
-             <PlaceDetails place={place} />
+             <PlaceDetails place={place}
+             selected={Number(childClicked) === i}
+             refProp={elRefs[i]} />
            </Container> 
          ))}
     </Container>
-
-
+</>
+      )}
     </div>
-  )
+  );
 }
