@@ -46,6 +46,7 @@ export default function PlaceDetails({ place, selected, refProp }) {
       </CardContent>
       <CardActions>
         <Button id={place.location_id} onClick={navigateToDetails}> View Details</Button>
+        <Button id={place.location_id} onClick={navigateToDetails}> View Details</Button>
       </CardActions>
 
     </Card>

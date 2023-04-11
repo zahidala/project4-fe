@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box, Grid } from '@material-ui/core';
@@ -7,8 +9,22 @@ import Map from '../Map/Map'
 import useStyles from './styles.js';
 import { getPlacesData, getWeatherData } from '../../api';
 
-const Header = ({ onPlaceChanged, onLoad }) => {
-  const classes = useStyles();
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {
+      setCoordinates({ lat: latitude, lng: longitude })
+
+    })
+  }, [])
+
+  useEffect(() => {
+    console.log(coordinates, bounds)
+    getPlacesData(bounds.sw, bounds.ne)
+    .then((data) => {
+      console.log(data)
+      setPlaces(data)
+    })
+  }, [coordinates, bounds])
 
   const [type, setType] = useState('restaurants');
   const [rating, setRating] = useState('');
@@ -64,6 +80,7 @@ const Header = ({ onPlaceChanged, onLoad }) => {
 
   return (
     <>
+
         <Box display="flex">
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
@@ -102,4 +119,13 @@ const Header = ({ onPlaceChanged, onLoad }) => {
   );
 };
 
-export default Header;
+
+  <div>
+    <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} places={places}/>
+    <Container>
+      <List places={places} />
+    </Container>
+  </div>
+  </>
+)
+}
