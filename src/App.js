@@ -84,14 +84,6 @@ export default function App() {
   </>
   ) 
 
-  // const onLoad = (autoC) => setAutocomplete(autoC)
-  // console.log('on', onLoad)
-  // const onPlaceChanged = () => {
-  //   const lat = autocomplete.getPlace().geometry.location.lat()
-  //   const lng = autocomplete.getPlace().geometry.location.lng()
-  //   setCoordinates({ lat, lng})
-  // }
-
   return (
     <>
     <Router>
@@ -101,13 +93,10 @@ export default function App() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
       
-        
-          
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
           {navbar}
           </nav>
 
-        
         </Navbar.Collapse>
         </Container>
         </Navbar>
