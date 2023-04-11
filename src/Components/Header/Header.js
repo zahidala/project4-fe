@@ -14,8 +14,10 @@ export default function Header() {
     const [coordinates, setCoordinates] = useState({})
     const [bounds, setBounds] = useState({})
     const [childClicked, setChildClicked] = useState(null)
-
     const [isLoading, setIsLoading] = useState(false)
+
+    const [type, setType] = useState('restaurants')
+    const [rating, setRating] = useState('')
 
   
   // const [autocomplete, setAutocomplete] = useState(null)
@@ -36,15 +38,15 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    console.log(coordinates, bounds)
     setIsLoading(true)
-    getPlacesData(bounds.sw, bounds.ne)
+
+    getPlacesData(type, bounds.sw, bounds.ne)
     .then((data) => {
       console.log(data)
       setPlaces(data)
       setIsLoading(false)
     })
-  }, [coordinates, bounds])
+  }, [type, coordinates, bounds])
 
   return (
     <>
@@ -84,6 +86,10 @@ export default function Header() {
       places={places}
       childClicked={childClicked}
       isLoading={isLoading}
+      type={type}
+      setType={setType}
+      rating={rating}
+      setRating={setRating}
        />
     </Container>
   </div>

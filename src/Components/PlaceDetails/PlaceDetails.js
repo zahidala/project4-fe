@@ -5,7 +5,7 @@ import { Chip } from '@material-ui/core'
 export default function PlaceDetails({ place, selected, refProp }) {
   console.log(place)
 
-  if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+  if (selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
 
   return (
     <Card elevation={6}>
