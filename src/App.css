@@ -39,6 +39,8 @@
 
 .color-nav {
   background-color: white;
+  justify-content: center;
+  color: black;
 }
 
 .mask {
