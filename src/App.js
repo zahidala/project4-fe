@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { CssBaseline, Grid } from '@material-ui/core';
+import { getPlacesData, getWeatherData } from './api';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import Header from './Components/Header/Header'
@@ -8,16 +11,24 @@ import Signup from './user/Signup'
 import Signin from './user/Signin'
 import MyCalendar from './Components/Plan/MyCalendar';
 import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+<<<<<<< HEAD
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/ViewDetails/review'
+=======
+import ViewDetails from './Components/ViewDetails/ViewDetails';
+
+>>>>>>> c298f16baf1f22655de5bd89595447e8b6d977fc
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
   const[user, setUser] = useState({});
+  // const [coordinates, setCoordinates] = useState({})
+
 
   useEffect(()=> {
     let token = localStorage.getItem("token")
@@ -36,10 +47,13 @@ export default function App() {
 
   })
 
+  const navigate = useNavigate();
+
   const registerHandler = (user) =>{
     Axios.post("auth/signup", user)
     .then(res => {
       console.log(res)
+      navigate("/")
     })
     .catch(err =>{
       console.log(err)
@@ -56,6 +70,7 @@ export default function App() {
         let user = jwt_decode(token);
         setIsAuth(true)
         setUser(user)
+        navigate("/");
       }
     })
     .catch(err =>{
@@ -86,12 +101,65 @@ export default function App() {
     <>
      <Link to="/signup">Signup</Link>&nbsp;
      <Link to="/signin">Signin</Link> &nbsp;
+     
   </>
   ) 
 
+  const [type, setType] = useState('restaurants');
+  const [rating, setRating] = useState('');
+
+  const [coords, setCoords] = useState({});
+  const [bounds, setBounds] = useState(null);
+
+  const [weatherData, setWeatherData] = useState([]);
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
+  const [places, setPlaces] = useState([]);
+
+  const [autocomplete, setAutocomplete] = useState(null);
+  const [childClicked, setChildClicked] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+      setCoords({ lat: latitude, lng: longitude });
+    });
+  }, []);
+
+  useEffect(() => {
+    const filtered = places.filter((place) => Number(place.rating) > rating);
+
+    setFilteredPlaces(filtered);
+  }, [rating]);
+
+  useEffect(() => {
+    if (bounds) {
+      setIsLoading(true);
+
+      getWeatherData(coords.lat, coords.lng)
+        .then((data) => setWeatherData(data));
+
+      getPlacesData(type, bounds.sw, bounds.ne)
+        .then((data) => {
+          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+          setFilteredPlaces([]);
+          setRating('');
+          setIsLoading(false);
+        });
+    }
+  }, [bounds, type]);
+
+  const onLoad = (autoC) => setAutocomplete(autoC);
+
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
+
+    setCoords({ lat, lng });
+  };
+
   return (
     <>
-    <Router>
+    {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
       <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
@@ -108,18 +176,46 @@ export default function App() {
         
         <div>
             <Routes>
-              <Route path="/" element={<Header />}></Route>
+              <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
+<<<<<<< HEAD
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route path="/plan" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
 
+=======
+              <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
+>>>>>>> c298f16baf1f22655de5bd89595447e8b6d977fc
             </Routes>            
           </div>
-        </Router>
-        </>
+        {/* </Router> */}
 
-       
+        <CssBaseline />
+     
+      <Grid container spacing={3} style={{ width: '100%' }}>
+        <Grid item xs={12} md={4}>
+          <List
+            isLoading={isLoading}
+            childClicked={childClicked}
+            places={filteredPlaces.length ? filteredPlaces : places}
+            type={type}
+            setType={setType}
+            rating={rating}
+            setRating={setRating}
+          />
+        </Grid>
+        <Grid item xs={12} md={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Map
+            setChildClicked={setChildClicked}
+            setBounds={setBounds}
+            setCoords={setCoords}
+            coords={coords}
+            places={filteredPlaces.length ? filteredPlaces : places}
+            weatherData={weatherData}
+          />
+        </Grid>
+      </Grid>
+    </>
   )
 }
