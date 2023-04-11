@@ -16,7 +16,7 @@ export default function PlaceDetails({ place }) {
         {/* {place?.cuisine?.map(({ name }) => {
         <Card.Text key={name} size="small" label={name}></Card.Text>
       })} */}
-      <Button onClick={() => window.open(place.web_url, '_blank')}>View Details</Button>
+      <Button>View Details</Button>
       </Card.Body>
       
     </Card>
