@@ -7,6 +7,7 @@ import Map from './Components/Map/Map'
 import Signup from './user/Signup'
 import Signin from './user/Signin'
 import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
@@ -34,10 +35,13 @@ export default function App() {
 
   })
 
+  const navigate = useNavigate();
+
   const registerHandler = (user) =>{
     Axios.post("auth/signup", user)
     .then(res => {
       console.log(res)
+      navigate("/")
     })
     .catch(err =>{
       console.log(err)
@@ -54,6 +58,7 @@ export default function App() {
         let user = jwt_decode(token);
         setIsAuth(true)
         setUser(user)
+        navigate("/");
       }
     })
     .catch(err =>{
@@ -86,7 +91,7 @@ export default function App() {
 
   return (
     <>
-    <Router>
+    {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
       <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
@@ -108,7 +113,7 @@ export default function App() {
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
             </Routes>            
           </div>
-        </Router>
+        {/* </Router> */}
         </>
 
        
