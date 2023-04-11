@@ -4,19 +4,8 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import Rating from '@material-ui/lab'
 
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-
-
+// import mapStyles from '../../mapStyles';
 import useStyles from './styles'
-// const containerStyle = {
-//   width: '400px',
-//   height: '400px'
-// };
-
-// const center = {
-//   lat: -3.745,
-//   lng: -38.523
-// };
 
 export default function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }) {
   const classes = useStyles()
