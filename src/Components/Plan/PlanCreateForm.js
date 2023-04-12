@@ -3,11 +3,12 @@ import { Container, Form, Button } from 'react-bootstrap';
 import './PlanCreateForm';
 import ViewDetails from '../ViewDetails/ViewDetails'
 import { Place } from "@material-ui/icons";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import Signin from '../../user/Signin'
+import jwt_decode from 'jwt-decode';
 // take the id from the API
 const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/get-details';
 
@@ -41,6 +42,9 @@ export default function PlanCreateForm(props) {
   //     console.log(user)
   // }
 
+  const [isAuth, setIsAuth]= useState(false)
+  const[user, setUser] = useState({});
+
  // To go to Calender
   const navigate = useNavigate()
   const toMyTravels = (event) => {
@@ -52,6 +56,8 @@ export default function PlanCreateForm(props) {
     setNewUser(user)
     console.log('check')
     console.log(user)
+    
+    
     navigate(`/calendar/${place.location_id}` )
   }
   
@@ -67,9 +73,24 @@ const [loading, setLoading] = useState(true);
       const data = await fetchPlaceData(id);
       setPlace(data);
       setLoading(false);
+      let token = localStorage.getItem("token")
+      if(token !=null){
+        let user = jwt_decode(token)
+  
+        if(user){
+          setIsAuth(true)
+          setUser(user)
+        }
+        else if(!user){
+          localStorage.removeItem("token")
+          setIsAuth(false)
+        }
+      }
     };
 
     fetchPlace();
+    
+    
   }, [id]);
 
   // for grabing location id
@@ -81,17 +102,6 @@ const [loading, setLoading] = useState(true);
 //     // navigate(`/plan/` )
 //   }
   
-
-
-  useEffect(() => {
-    const fetchPlace = async () => {
-      const data = await fetchPlaceData(id);
-      setPlace(data);
-      setLoading(false);
-    };
-
-    fetchPlace();
-  }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -115,26 +125,28 @@ const [loading, setLoading] = useState(true);
   };
 
   // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    props.addPlan(newPlan);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   props.addPlan(newPlan);
+  // };
+
+
+  
+
+  // console.log("id:"+user._id)
 
   return (
     <div>
       <h1>Add a Plan</h1>
       <Container>
         {/* Name input field */}
-        
         <Form.Group>
           <Form.Label>Name {place.name}</Form.Label>
-          {/* <Form.Control name="name" onChange={handleChange}></Form.Control> */}
         </Form.Group>
 
         {/* Description input field */}
         <Form.Group>
           <Form.Label>Category {place.category.name}</Form.Label>
-          {/* <Form.Control name="description"onChange={handleChange}></Form.Control> */}
         </Form.Group>
 
         {/* Start Date input field */}
@@ -156,6 +168,8 @@ const [loading, setLoading] = useState(true);
             onChange={handleChange}
           ></Form.Control>
         </Form.Group>
+
+      <input type="hidden" name="user" value={user._id}/>
 
         {/* Add plan button */}
         <Button variant="primary" onClick={toMyTravels}>
