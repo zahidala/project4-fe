@@ -6,6 +6,7 @@ import './App.css';
 import Header from './Components/Header/Header';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
+import Home from './Components/Home/Home'
 import MyCalendar from './Components/Plan/MyCalendar';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -15,10 +16,7 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstr
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/reviews/ReviewCreateForm';
 import ViewDetails from './Components/ViewDetails/ViewDetails';
-<<<<<<< HEAD
 import logo from './travel-buddy.png'
-=======
->>>>>>> ebec4823e5079496bbb8aa9cfdee5c217239fea0
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
@@ -154,6 +152,7 @@ export default function App() {
               <Route path="/plan" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
               <Route path="/header" element={<Header />}></Route>
+              <Route path='/' element={<Home />}></Route>
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
 
             </Routes>            
