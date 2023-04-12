@@ -11,6 +11,12 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
 
+  if (weatherData.list && weatherData.list.length === 0) {
+    console.log("not working emptyyyyyy")
+  } else {
+    console.log("working")
+  }
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
@@ -47,11 +53,16 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
               )}
           </div>
         ))}
-        {weatherData?.list?.length && weatherData.list.map((data, i) => (
+        {/* {weatherData?.list?.length && weatherData.list.map((data, i) => (
           <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
             <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" />
           </div>
-        ))}
+        ))} */}
+        {weatherData?.list?.map((data, i) => {
+          <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
+            <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="icon"/>
+          </div>
+        })}
       </GoogleMapReact>
     </div>
   );
