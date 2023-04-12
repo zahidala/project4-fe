@@ -67,7 +67,11 @@ const Header = () => {
 
   return (
     <div className="bg" style={{ backgroundColor: 'f4a261'}}>
-    <Typography variant="h5" style={{ textAlign: 'center' }}>Explore new places</Typography>
+    <h2 className='explore-title'>Explore New Places</h2>
+        
+
+    <Grid container spacing={3} style={{ width: '100%' }}>
+        <Grid item xs={12} md={4}>
         <Box display="flex">
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
@@ -78,9 +82,6 @@ const Header = () => {
             </div>
           </Autocomplete>
         </Box>
-
-    <Grid container spacing={3} style={{ width: '100%' }}>
-        <Grid item xs={12} md={4}>
           <List
             isLoading={isLoading}
             childClicked={childClicked}

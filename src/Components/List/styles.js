@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { alpha, makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   formControl: {
@@ -17,6 +17,11 @@ export default makeStyles((theme) => ({
     marginBottom: '30px',
   },
   list: {
-    height: '75vh', overflow: 'auto',
+    height: '77vh', overflow: 'auto',
   },
+  select: {
+    backgroundColor: alpha(theme.palette.common.white, 1),
+    padding: '1vh',
+    borderRadius: theme.shape.borderRadius,
+  }
 }));
