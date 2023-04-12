@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ViewDetails.css';
+import ReviewCreateForm from '../reviews/ReviewCreateForm';
 
 const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/get-details';
 
@@ -62,7 +63,11 @@ export default function ViewDetails() {
       <p>Location: {place.location_string}</p>
       <p>Is Open: {place.is_open_now ? 'Yes' : 'No'}</p>
       <p>Category: {place.category.name}</p>
+      <ReviewCreateForm/>
     </div>
+
+      
+
   );
 
 }

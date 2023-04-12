@@ -24,15 +24,15 @@ class MyCalendar extends React.Component {
 
   handleEventClick= ({event}) => {
     // openPlan is a function I wrote to open a form to edit that plan
-    this.props.openPlan(event.extendedProps)
+    this.props.openAppointment(event.extendedProps)
 }
 
 handleEventDrop = (info) => {
         if(window.confirm("Are you sure you want to change the event date?")){
             console.log('change confirmed')
 
-            // updatePlan is another custom method
-            this.props.updatePlan({...info.event.extendedProps, start: info.event.start, end: info.event.end})
+            // updatePlanis another custom method
+            this.props.updateAppointment({...info.event.extendedProps, start: info.event.start, end: info.event.end})
 
         } else {
             console.log('change aborted')
