@@ -152,7 +152,7 @@ export default function App() {
               <Route exact path="/plan/:id" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
               <Route path="/header" element={<Header />}></Route> 
-              {/* <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>s */}
+              <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
 
             </Routes>            
           </div>
