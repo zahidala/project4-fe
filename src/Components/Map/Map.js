@@ -11,6 +11,12 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
 
+  if (weatherData.list && weatherData.list.length === 0) {
+    console.log("not working emptyyyyyy")
+  } else {
+    console.log("working")
+  }
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
