@@ -67,6 +67,19 @@
  background: rgba(230, 227, 227, 0.411);
 }
 .bg {
+
+  background-color: #FFD580;
+}
+.button{
+ background: #FFA843;
+ border-color: #FFA843;
+}
+.button:hover, .button:visited , .button:active {
+  background: #03045E;
+  border-color: #03045E;
+ }
+ 
+ 
   background-color: #FFA843;
 }
 
