@@ -15,10 +15,7 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstr
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/reviews/ReviewCreateForm';
 import ViewDetails from './Components/ViewDetails/ViewDetails';
-<<<<<<< HEAD
 import logo from './travel-buddy.png'
-=======
->>>>>>> ebec4823e5079496bbb8aa9cfdee5c217239fea0
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
