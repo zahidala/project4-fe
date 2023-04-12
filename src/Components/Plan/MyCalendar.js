@@ -1,9 +1,9 @@
 import React from 'react';
-//Fullcalendar and Realted Plugins
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin from "@fullcalendar/interaction"; 
-import listPlugin from '@fullcalendar/list'; //For List View
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
+
 class MyCalendar extends React.Component {
   
 //   formatEvents() {
@@ -59,4 +59,5 @@ class MyCalendar extends React.Component {
 )
 };
 }
+
 export default MyCalendar;
