@@ -133,9 +133,9 @@ export default function App() {
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
       <Link className="my-navbar" to="/"><Navbar.Brand><img src={logo} className='logo' /></Navbar.Brand></Link>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+        <Navbar.Toggle aria-controls="navbarscroll" />
+        <Navbar.Collapse id="navbarscroll">
+          <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarscroll="true">
           {navbar}
           </nav>
         </Navbar.Collapse>
