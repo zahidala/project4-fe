@@ -135,7 +135,7 @@ export default function App() {
       <Container fluid>
       <Link className="my-navbar" to="/"><Navbar.Brand><img src={logo} className='logo' /></Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Collapse className='collapse' id="navbarScroll">
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
           {navbar}
           </nav>
@@ -145,13 +145,13 @@ export default function App() {
         
         <div>
             <Routes>
-              {/* <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route> */}
+              <Route path="/" element={ <Home />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route exact path="/plan/:id" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
-              <Route path="/header" element={<Header />}></Route> 
+              <Route path="/header" element={<Header />}></Route>
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
 
             </Routes>            

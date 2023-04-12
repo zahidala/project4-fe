@@ -1,0 +1,84 @@
+.first {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../../pics/greece-1.jpg');    
+    width: 100%;
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+.explore {
+    background-color: #FFA843;
+    border: 0;
+    border-radius: 30vh;
+    width: 13%;
+    height: 8%;
+    color: #03045E;
+    font-weight: 600;
+    font-family: batangas;
+    font-size: 1vw;
+    position: relative;
+    top: 45%;
+    
+}
+
+.explore:hover {
+    background-color: #03045E;
+    color:  #FFA843;
+}
+
+.para {
+    position: relative;
+    top: 35%;
+    font-size: 5vh;
+    color: aliceblue;
+    font-family: batangas;
+    letter-spacing: .2rem;
+
+}
+/* second section */
+
+.h2 {
+    text-align: center;
+    font-family: batangas;
+    color: #03045E;
+    padding: 4%;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 35vh;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    
+}
+
+.p {
+    position: relative;
+    top: 45%;
+    font-size: 6vh;
+    font-family: batangas;
+    color: aliceblue;
+    letter-spacing: 1vh;
+}
+
+.card1 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../pics/restaurant.jpg');
+}
+
+
+.card2 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../pics/hotel.jpg');
+}
+
+
+.card3 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../pics/park.jpg');
+}

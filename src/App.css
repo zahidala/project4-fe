@@ -66,10 +66,6 @@
  margin:50px 30px 30px 50px;
  background: rgba(230, 227, 227, 0.411);
 }
-.bg {
-
-  background-color: #FFD580;
-}
 .button{
  background: #FFA843;
  border-color: #FFA843;
@@ -79,7 +75,7 @@
   border-color: #03045E;
  }
  
- 
+.bg {
   background-color: #FFA843;
 }
 
