@@ -10,11 +10,12 @@ export default makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 1),
     '&:hover': { backgroundColor: alpha(theme.palette.common.white, 0.25) },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
+    marginRight: 0,
+    marginLeft: theme.spacing(2),
     width: '100%',
+    marginTop: '3vh',
     [theme.breakpoints.up('sm')]: { marginLeft: theme.spacing(3), width: 'auto' },
   },
   searchIcon: {

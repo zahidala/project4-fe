@@ -24,9 +24,9 @@ export const getPlacesData = async (type, sw, ne) => {
 export const getWeatherData = async (lat, lng) => {
   try {
     if (lat && lng) {
-      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=1b83ba69a25ece169e8216d7655fe9b4`);
+      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`);
 
-      console.log('weather', data)
+      console.log('weather DATA', data)
       return data;
     }
   } catch (error) {
