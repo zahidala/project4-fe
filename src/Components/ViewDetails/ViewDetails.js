@@ -34,7 +34,7 @@ export default function ViewDetails() {
   const planForm = (event) => {
     let id = event.currentTarget.id
     console.log(id)
-    navigate(`/plan/` )
+    navigate(`/plan/${place.location_id}` )
   }
   
   const id = useParams().id;
@@ -104,7 +104,7 @@ export default function ViewDetails() {
       <p>Location: {place.location_string}</p>
       <p>Is Open: {place.is_open_now ? 'Yes' : 'No'}</p>
       <p>Category: {place.category.name}</p>
-      <Button  onClick={planForm}>Add To Plan</Button>
+      <Button id={place.location_id} onClick={planForm}>Add To Plan</Button>
       <ReviewCreateForm></ReviewCreateForm>
     </div>
     </>
