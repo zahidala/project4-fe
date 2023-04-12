@@ -6,6 +6,7 @@ import List from '../List/List'
 import Map from '../Map/Map'
 import useStyles from './styles.js';
 import { getPlacesData, getWeatherData } from '../../api';
+import '../../App.css'
 
 const Header = () => {
   const classes = useStyles();
@@ -65,7 +66,7 @@ const Header = () => {
   };
 
   return (
-    <>
+    <div className="bg" style={{ backgroundColor: 'f4a261'}}>
     <Typography variant="h5" style={{ textAlign: 'center' }}>Explore new places</Typography>
         <Box display="flex">
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
@@ -101,7 +102,7 @@ const Header = () => {
           />
         </Grid>
       </Grid>
-      </>
+      </div>
   );
 };
 
