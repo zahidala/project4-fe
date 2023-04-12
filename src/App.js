@@ -15,6 +15,7 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstr
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/reviews/ReviewCreateForm';
 import ViewDetails from './Components/ViewDetails/ViewDetails';
+import logo from './travel-buddy.png'
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
@@ -78,18 +79,20 @@ export default function App() {
     localStorage.removeItem("token");
     setIsAuth(false);
     setUser(null);
+    navigate("/");
 
   };
 
   // navbar with conditional rendering based on authentication
   const navbar = isAuth ? (
     <>
-     <Link className="my-navbar" to="/">Home</Link> &nbsp; 
+     {/* <Link className="my-navbar" to="/">Home</Link> &nbsp;  */}
+     <Link className="my-navbar" to="/header">Explore</Link> &nbsp; 
      <Link className="my-navbar" to="/calendar">MyCalendar</Link> &nbsp; 
-     <Link className="my-navbar" to="/plan">Plan</Link> &nbsp; 
-     <Link className="my-navbar" to="/review">Review</Link> &nbsp; 
+     {/* <Link className="my-navbar" to="/plan">Plan</Link> &nbsp;  */}
+     {/* <Link className="my-navbar" to="/review">Review</Link> &nbsp;  */}
      <Link className="my-navbar" to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
-     <Link className="my-navbar" to="/header">Explore</Link>
+     
     </>
   )
   :
@@ -129,7 +132,7 @@ export default function App() {
     {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Link className="my-navbar" to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
+      <Link className="my-navbar" to="/"><Navbar.Brand><img src={logo} className='logo' /></Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
@@ -145,7 +148,7 @@ export default function App() {
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
               <Route path="/calendar" element={<MyCalendar/>}></Route>
-              <Route path="/plan" element={<PlanCreateForm/>}></Route>
+              <Route exact path="/plan/:id" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
               <Route path="/header" element={<Header />}></Route>
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
