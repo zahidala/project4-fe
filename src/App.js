@@ -80,19 +80,19 @@ export default function App() {
   
   const navbar = isAuth ?(
     <>
-     <Link to="/">Home</Link> &nbsp; 
-     <Link to="/calendar">MyCalendar</Link> &nbsp; 
-     <Link to="/plan">Plan</Link> &nbsp; 
-     <Link to="/review">Review</Link> &nbsp; 
-     <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
-     <Link to="/header">header</Link>
+     <Link className="my-navbar" to="/">Home</Link> &nbsp; 
+     <Link className="my-navbar" to="/calendar">MyCalendar</Link> &nbsp; 
+     <Link className="my-navbar" to="/plan">Plan</Link> &nbsp; 
+     <Link className="my-navbar" to="/review">Review</Link> &nbsp; 
+     <Link className="my-navbar" to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
+     <Link className="my-navbar" to="/header">Explore</Link>
     </>
   )
   :
   (
     <>
-     <Link to="/signup">Signup</Link>&nbsp;
-     <Link to="/signin">Signin</Link> &nbsp;
+     <Link className="my-navbar" to="/signup">Signup</Link>&nbsp;
+     <Link className="my-navbar" to="/signin">Signin</Link> &nbsp;
      
   </>
   ) 
@@ -125,7 +125,7 @@ export default function App() {
     {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
+      <Link className="my-navbar" to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
