@@ -29,4 +29,8 @@ export default makeStyles((theme) => ({
   toolbar: {
     display: 'flex', justifyContent: 'space-between',
   },
+  bg: {
+    backgroundColor: theme.palette.warning.light,
+  }
+
 }));

@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlacesData, getWeatherData } from './api';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css'
-import Header from './Components/Header/Header'
-import Signup from './user/Signup'
-import Signin from './user/Signin'
+import './App.css';
+import Header from './Components/Header/Header';
+import Signup from './user/Signup';
+import Signin from './user/Signin';
 import MyCalendar from './Components/Plan/MyCalendar';
-import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import Axios from 'axios'
-import jwt_decode from 'jwt-decode'
+import Axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
-import ReviewCreateForm from './Components/reviews/ReviewCreateForm'
+import ReviewCreateForm from './Components/reviews/ReviewCreateForm';
 import ViewDetails from './Components/ViewDetails/ViewDetails';
-
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
   const[user, setUser] = useState({});
-  // const [coordinates, setCoordinates] = useState({})
-
 
   useEffect(()=> {
     let token = localStorage.getItem("token")
@@ -38,125 +35,101 @@ export default function App() {
       }
     }
 
-  })
+  });
 
   const navigate = useNavigate();
 
-  const registerHandler = (user) =>{
+  // registerHandler function for handling registration
+  const registerHandler = (user) => {
     Axios.post("auth/signup", user)
-    .then(res => {
-      console.log(res)
-      navigate("/")
-    })
-    .catch(err =>{
-      console.log(err)
-    })
-  }
-  const loginHandler = (cred) =>{
-    Axios.post("auth/signin", cred)
-    .then(res => {
-      console.log(res.data.token)
-      // save the token into local storage
-      let token = res.data.token
-      if(token!=null){
-        localStorage.setItem("token", token)
-        let user = jwt_decode(token);
-        setIsAuth(true)
-        setUser(user)
+      .then(res => {
+        console.log(res);
         navigate("/");
-      }
-    })
-    .catch(err =>{
-      console.log(err)
-      setIsAuth(false)
-    })
-  }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
+  // loginHandler function for handling login
+  const loginHandler = (cred) => {
+    Axios.post("auth/signin", cred)
+      .then(res => {
+        console.log(res.data.token);
+        // save the token into local storage
+        let token = res.data.token;
+        if (token != null) {
+          localStorage.setItem("token", token);
+          let user = jwt_decode(token);
+          setIsAuth(true);
+          setUser(user);
+          navigate("/");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        setIsAuth(false);
+      });
+  };
+
+  // onLogOutHandler function for handling logout
   const onLogOutHandler = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token")
-    setIsAuth(false)
-    setUser(null)
+    localStorage.removeItem("token");
+    setIsAuth(false);
+    setUser(null);
 
-  }
-  
-  const navbar = isAuth ?(
+  };
+
+  // navbar with conditional rendering based on authentication
+  const navbar = isAuth ? (
     <>
-     <Link to="/">Home</Link> &nbsp; 
-     <Link to="/calendar">MyCalendar</Link> &nbsp; 
-     <Link to="/plan">Plan</Link> &nbsp; 
-     <Link to="/review">Review</Link> &nbsp; 
-     <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
-     <Link to="/header">header</Link>
+     <Link className="my-navbar" to="/">Home</Link> &nbsp; 
+     <Link className="my-navbar" to="/calendar">MyCalendar</Link> &nbsp; 
+     <Link className="my-navbar" to="/plan">Plan</Link> &nbsp; 
+     <Link className="my-navbar" to="/review">Review</Link> &nbsp; 
+     <Link className="my-navbar" to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
+     <Link className="my-navbar" to="/header">Explore</Link>
     </>
   )
   :
   (
     <>
-     <Link to="/signup">Signup</Link>&nbsp;
-     <Link to="/signin">Signin</Link> &nbsp;
+     <Link className="my-navbar" to="/signup">Signup</Link>&nbsp;
+     <Link className="my-navbar" to="/signin">Signin</Link> &nbsp;
      
   </>
   ) 
 
-  const [type, setType] = useState('restaurants');
-  const [rating, setRating] = useState('');
+  // const [type, setType] = useState('restaurants');
+  // const [rating, setRating] = useState('');
 
-  const [coords, setCoords] = useState({});
-  const [bounds, setBounds] = useState(null);
+  // const [coords, setCoords] = useState({});
+  // const [bounds, setBounds] = useState(null);
 
-  const [weatherData, setWeatherData] = useState([]);
-  const [filteredPlaces, setFilteredPlaces] = useState([]);
-  const [places, setPlaces] = useState([]);
+  // const [weatherData, setWeatherData] = useState([]);
+  // const [filteredPlaces, setFilteredPlaces] = useState([]);
+  // const [places, setPlaces] = useState([]);
 
-  const [autocomplete, setAutocomplete] = useState(null);
-  const [childClicked, setChildClicked] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [autocomplete, setAutocomplete] = useState(null);
+  // const [childClicked, setChildClicked] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-  //     setCoords({ lat: latitude, lng: longitude });
-  //   });
-  // }, []);
+  // const onLoad = (autoC) => setAutocomplete(autoC);
 
-  // useEffect(() => {
-  //   const filtered = places.filter((place) => Number(place.rating) > rating);
+  // const onPlaceChanged = () => {
+  //   const lat = autocomplete.getPlace().geometry.location.lat();
+  //   const lng = autocomplete.getPlace().geometry.location.lng();
 
-  //   setFilteredPlaces(filtered);
-  // }, [rating]);
-
-  // useEffect(() => {
-  //   if (bounds) {
-  //     setIsLoading(true);
-
-  //     getWeatherData(coords.lat, coords.lng)
-  //       .then((data) => setWeatherData(data));
-
-  //     getPlacesData(type, bounds.sw, bounds.ne)
-  //       .then((data) => {
-  //         setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-  //         setFilteredPlaces([]);
-  //         setRating('');
-  //         setIsLoading(false);
-  //       });
-  //   }
-  // }, [bounds, type]);
-
-  const onLoad = (autoC) => setAutocomplete(autoC);
-
-  const onPlaceChanged = () => {
-    const lat = autocomplete.getPlace().geometry.location.lat();
-    const lng = autocomplete.getPlace().geometry.location.lng();
-
-    setCoords({ lat, lng });
-  };
+  //   setCoords({ lat, lng });
+  // };
 
   return (
     <>
     {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Link to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
+      <Link className="my-navbar" to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
@@ -174,7 +147,7 @@ export default function App() {
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route path="/plan" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
-              <Route path="/header" element={<Header onPlaceChanged={onPlaceChanged} onLoad={onLoad}/>}></Route>
+              <Route path="/header" element={<Header />}></Route>
               <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
 
             </Routes>            
