@@ -5,6 +5,7 @@ import ViewDetails from '../ViewDetails/ViewDetails'
 import { Place } from "@material-ui/icons";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -44,6 +45,7 @@ export default function PlanCreateForm(props) {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const fetchPlace = async () => {
       const data = await fetchPlaceData(id);
@@ -61,7 +63,6 @@ export default function PlanCreateForm(props) {
   if (!place) {
     return <div>Place not found</div>;
   }
-
 
  
 

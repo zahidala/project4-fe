@@ -150,8 +150,8 @@ export default function App() {
               <Route path="/calendar" element={<MyCalendar/>}></Route>
               <Route exact path="/plan/:id" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
-              <Route path="/header" element={<Header />}></Route>
-              <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>
+              <Route path="/header" element={<Header />}></Route> */}
+              {/* <Route exact path='/viewdetails/:id' element={<ViewDetails/>}></Route>s */}
 
             </Routes>            
           </div>
