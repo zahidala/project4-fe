@@ -24,7 +24,7 @@ export default function PlaceDetails({ place, selected, refProp }) {
   return (
     <Card elevation={6}>
       <CardMedia
-        style={{ height: 350 }}
+        style={{ height: 300 }}
         image={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
         title={place.name}
       />
@@ -36,7 +36,7 @@ export default function PlaceDetails({ place, selected, refProp }) {
         </Box>
         <Box display="flex" justifyContent="space-between">
           <Typography component="legend">Price</Typography>
-          <Typography gutterBottom variant="subtitle1">
+          <Typography gutterBottom variant="subtitle2">
             {place.price}
           </Typography>
         </Box>
