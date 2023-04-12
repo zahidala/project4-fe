@@ -78,18 +78,20 @@ export default function App() {
     localStorage.removeItem("token");
     setIsAuth(false);
     setUser(null);
+    navigate("/");
 
   };
 
   // navbar with conditional rendering based on authentication
   const navbar = isAuth ? (
     <>
-     <Link className="my-navbar" to="/">Home</Link> &nbsp; 
+     {/* <Link className="my-navbar" to="/">Home</Link> &nbsp;  */}
+     <Link className="my-navbar" to="/header">Explore</Link> &nbsp; 
      <Link className="my-navbar" to="/calendar">MyCalendar</Link> &nbsp; 
-     <Link className="my-navbar" to="/plan">Plan</Link> &nbsp; 
-     <Link className="my-navbar" to="/review">Review</Link> &nbsp; 
+     {/* <Link className="my-navbar" to="/plan">Plan</Link> &nbsp;  */}
+     {/* <Link className="my-navbar" to="/review">Review</Link> &nbsp;  */}
      <Link className="my-navbar" to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
-     <Link className="my-navbar" to="/header">Explore</Link>
+     
     </>
   )
   :
