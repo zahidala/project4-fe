@@ -38,9 +38,14 @@
 } */
 
 .color-nav {
-  background-color: white;
+  background-color: #03045e;
   justify-content: center;
   color: black;
+}
+
+.my-navbar {
+  text-decoration: none;
+  color: white;
 }
 
 .mask {
@@ -57,9 +62,10 @@
   padding: 25px;
 }
 
-
-
 .maincontainer{
  margin:50px 30px 30px 50px;
  background: rgba(230, 227, 227, 0.411);
+}
+.bg {
+  background-color: #FFD580;
 }
