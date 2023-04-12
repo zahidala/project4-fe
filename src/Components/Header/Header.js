@@ -20,7 +20,7 @@ const Header = ({ onPlaceChanged, onLoad }) => {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [places, setPlaces] = useState([]);
 
-  const [autocomplete, setAutocomplete] = useState(null);
+  // const [autocomplete, setAutocomplete] = useState(null);
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
