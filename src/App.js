@@ -6,6 +6,7 @@ import './App.css';
 import Header from './Components/Header/Header';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
+import Home from './Components/Home/Home'
 import MyCalendar from './Components/Plan/MyCalendar';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -144,7 +145,7 @@ export default function App() {
         
         <div>
             <Routes>
-              {/* <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route> */}
+              <Route path="/" element={ <Home />}></Route>
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
               <Route exact path="/calendar/:id" element={<MyCalendar/>}></Route>
