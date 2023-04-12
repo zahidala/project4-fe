@@ -15,7 +15,7 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstr
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
 import ReviewCreateForm from './Components/reviews/ReviewCreateForm'
 import ViewDetails from './Components/ViewDetails/ViewDetails';
-
+import logo from './travel-buddy.png'
 
 export default function App() {
   const [isAuth, setIsAuth]= useState(false)
@@ -125,7 +125,7 @@ export default function App() {
     {/* <Router> */}
     <Navbar  expand="lg" className='color-nav'>
       <Container fluid>
-      <Link className="my-navbar" to="/"><Navbar.Brand>Trip Planner</Navbar.Brand></Link>
+      <Link className="my-navbar" to="/"><Navbar.Brand><img src={logo} className='logo' /></Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>

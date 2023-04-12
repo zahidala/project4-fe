@@ -67,5 +67,17 @@
  background: rgba(230, 227, 227, 0.411);
 }
 .bg {
-  background-color: #FFD580;
+  background-color: #FFA843;
 }
+
+.logo {
+  height: 10vh;
+}
+
+.explore-title {
+  color: #03045e;
+  text-align: center;
+  font-family: batangas;
+  padding: 5vh;
+}
+
