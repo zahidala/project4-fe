@@ -1,103 +1,104 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlacesData, getWeatherData } from './api';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css'
-import Header from './Components/Header/Header'
-import Signup from './user/Signup'
-import Signin from './user/Signin'
+import './App.css';
+import Header from './Components/Header/Header';
+import Signup from './user/Signup';
+import Signin from './user/Signin';
 import MyCalendar from './Components/Plan/MyCalendar';
-import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import Axios from 'axios'
-import jwt_decode from 'jwt-decode'
+import Axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import PlanCreateForm from './Components/Plan/PlanCreateForm';
-import ReviewCreateForm from './Components/reviews/ReviewCreateForm'
+import ReviewCreateForm from './Components/reviews/ReviewCreateForm';
 import ViewDetails from './Components/ViewDetails/ViewDetails';
 
-
 export default function App() {
-  const [isAuth, setIsAuth]= useState(false)
-  const[user, setUser] = useState({});
-  // const [coordinates, setCoordinates] = useState({})
+  const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState({});
 
+  // useEffect for handling authentication
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token != null) {
+      let user = jwt_decode(token);
 
-  useEffect(()=> {
-    let token = localStorage.getItem("token")
-    if(token !=null){
-      let user = jwt_decode(token)
-
-      if(user){
-        setIsAuth(true)
-        setUser(user)
-      }
-      else if(!user){
-        localStorage.removeItem("token")
-        setIsAuth(false)
+      if (user) {
+        setIsAuth(true);
+        setUser(user);
+      } else if (!user) {
+        localStorage.removeItem("token");
+        setIsAuth(false);
       }
     }
 
-  })
+  });
 
   const navigate = useNavigate();
 
-  const registerHandler = (user) =>{
+  // registerHandler function for handling registration
+  const registerHandler = (user) => {
     Axios.post("auth/signup", user)
-    .then(res => {
-      console.log(res)
-      navigate("/")
-    })
-    .catch(err =>{
-      console.log(err)
-    })
-  }
-  const loginHandler = (cred) =>{
-    Axios.post("auth/signin", cred)
-    .then(res => {
-      console.log(res.data.token)
-      // save the token into local storage
-      let token = res.data.token
-      if(token!=null){
-        localStorage.setItem("token", token)
-        let user = jwt_decode(token);
-        setIsAuth(true)
-        setUser(user)
+      .then(res => {
+        console.log(res);
         navigate("/");
-      }
-    })
-    .catch(err =>{
-      console.log(err)
-      setIsAuth(false)
-    })
-  }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
+  // loginHandler function for handling login
+  const loginHandler = (cred) => {
+    Axios.post("auth/signin", cred)
+      .then(res => {
+        console.log(res.data.token);
+        // save the token into local storage
+        let token = res.data.token;
+        if (token != null) {
+          localStorage.setItem("token", token);
+          let user = jwt_decode(token);
+          setIsAuth(true);
+          setUser(user);
+          navigate("/");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        setIsAuth(false);
+      });
+  };
+
+  // onLogOutHandler function for handling logout
   const onLogOutHandler = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token")
-    setIsAuth(false)
-    setUser(null)
+    localStorage.removeItem("token");
+    setIsAuth(false);
+    setUser(null);
 
-  }
-  
-  const navbar = isAuth ?(
+  };
+
+  // navbar with conditional rendering based on authentication
+  const navbar = isAuth ? (
     <>
-     <Link to="/">Home</Link> &nbsp; 
-     <Link to="/calendar">MyCalendar</Link> &nbsp; 
-     <Link to="/plan">Plan</Link> &nbsp; 
-     <Link to="/review">Review</Link> &nbsp; 
-     <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
-     <Link to="/header">header</Link>
+      <Link to="/">Home</Link> &nbsp;
+      <Link to="/calendar">MyCalendar</Link> &nbsp;
+      <Link to="/plan">Plan</Link> &nbsp;
+      <Link to="/review">Review</Link> &nbsp;
+      <Link to="/logout" onClick={onLogOutHandler}>Logout</Link>&nbsp;
+      <Link to="/header">header</Link>
     </>
-  )
-  :
-  (
-    <>
-     <Link to="/signup">Signup</Link>&nbsp;
-     <Link to="/signin">Signin</Link> &nbsp;
-     
-  </>
-  ) 
+  ) :
+    (
+      <>
+        <Link to="/signup">Signup</Link>&nbsp;
+        <Link to="/signin">Signin</Link> &nbsp;
+      </>
+    );
+
 
   const [type, setType] = useState('restaurants');
   const [rating, setRating] = useState('');
