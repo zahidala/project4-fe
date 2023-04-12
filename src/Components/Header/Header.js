@@ -7,7 +7,7 @@ import Map from '../Map/Map'
 import useStyles from './styles.js';
 import { getPlacesData, getWeatherData } from '../../api';
 
-const Header = ({ onPlaceChanged, onLoad }) => {
+const Header = () => {
   const classes = useStyles();
 
   const [type, setType] = useState('restaurants');
@@ -23,6 +23,8 @@ const Header = ({ onPlaceChanged, onLoad }) => {
   const [autocomplete, setAutocomplete] = useState(null);
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [coordinates, setCoordinates] = useState({})
+
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
@@ -53,17 +55,18 @@ const Header = ({ onPlaceChanged, onLoad }) => {
     }
   }, [bounds, type]);
 
-  // const onLoad = (autoC) => setAutocomplete(autoC);
+  const onLoad = (autoC) => setAutocomplete(autoC);
 
-  // const onPlaceChanged = () => {
-  //   const lat = autocomplete.getPlace().geometry.location.lat();
-  //   const lng = autocomplete.getPlace().geometry.location.lng();
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
 
-  //   setCoords({ lat, lng });
-  // };
+    setCoords({ lat, lng });
+  };
 
   return (
     <>
+    <Typography variant="h5" style={{ textAlign: 'center' }}>Explore new places</Typography>
         <Box display="flex">
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
