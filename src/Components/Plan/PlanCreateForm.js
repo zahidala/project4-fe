@@ -7,8 +7,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
-
-
+import Signin from '../../user/Signin'
+// take the id from the API
 const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/get-details';
 
 const fetchPlaceData = async (id) => {
@@ -31,19 +31,56 @@ const fetchPlaceData = async (id) => {
 
 export default function PlanCreateForm(props) {
   const [newPlan, setNewPlan] = useState({});
+  // user
+  const [newUser, setNewUser]= useState({});
+  // const changeHandler = (e) =>{
+  //     const user = {...newUser}
+  //     user[e.target.id] = e.target.value
+  //     setNewUser(user)
+  //     console.log('check')
+  //     console.log(user)
+  // }
 
-  // for grabing location id
+ // To go to Calender
   const navigate = useNavigate()
-  // To go to plan form
   const toMyTravels = (event) => {
     let id = event.currentTarget.id
+    console.log('location id')
     console.log(id)
+    const user = {...newUser}
+    user[event.target.id] = event.target.value
+    setNewUser(user)
+    console.log('check')
+    console.log(user)
     navigate(`/calendar/${place.location_id}` )
   }
   
-  const id = useParams().id;
-  const [place, setPlace] = useState(null);
-  const [loading, setLoading] = useState(true);
+const id = useParams().id;
+const [place, setPlace] = useState(null);
+const [loading, setLoading] = useState(true);
+// console.log("ID- here", id)
+
+
+  useEffect(() => {
+    console.log("ID", id)
+    const fetchPlace = async () => {
+      const data = await fetchPlaceData(id);
+      setPlace(data);
+      setLoading(false);
+    };
+
+    fetchPlace();
+  }, [id]);
+
+  // for grabing location id
+  // const navigate = useNavigate()
+  // To go to plan form
+//   const printForm = (event) => {
+//     let id = event.currentTarget.id
+//     console.log(id)
+//     // navigate(`/plan/` )
+//   }
+  
 
 
   useEffect(() => {
@@ -63,14 +100,6 @@ export default function PlanCreateForm(props) {
   if (!place) {
     return <div>Place not found</div>;
   }
-
- 
-
-
-
-
-  
-
 
 
 

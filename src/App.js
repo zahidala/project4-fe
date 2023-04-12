@@ -147,7 +147,7 @@ export default function App() {
               {/* <Route path="/" element={ <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />}></Route> */}
               <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={loginHandler}/>}></Route>
-              <Route path="/calendar" element={<MyCalendar/>}></Route>
+              <Route exact path="/calendar/:id" element={<MyCalendar/>}></Route>
               <Route exact path="/plan/:id" element={<PlanCreateForm/>}></Route>
               <Route path="/review" element={<ReviewCreateForm/>}></Route>
               <Route path="/header" element={<Header />}></Route>
