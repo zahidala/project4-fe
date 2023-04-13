@@ -115,8 +115,7 @@ Ensure you have the latest version of `npm` installed by running this command:
 
 ### <ins>Entity Relationship Diagram</ins>
 
-<!-- ![ERD]() -->
-Link here
+![ERD](https://i.ibb.co/0hsDfW8/project4-2-drawio.png)
 
 ### <ins>Wireframes</ins>
 
