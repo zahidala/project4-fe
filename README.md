@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <a href="#">
+    <img src="https://i.ibb.co/yRkszL6/travel-buddy.png" alt="Logo">
+  </a>
 
-## Available Scripts
+  <h3 align="center">Travel Buddy</h3>
 
-In the project directory, you can run:
+  <p align="center">
+  It is the ultimate travel companion for planning and experiencing unforgettable adventures. Inspired by the renowned TripAdvisor, our app is the go-to app for exploring new destinations, finding the best accommodations, restaurants, and attractions, all based on authentic traveler reviews and recommendations.
+  </p>
+</div>
+<br>
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#technologies-used">Technologies Used</a></li>
+    <li><a href="#team-members">Team Members</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <ul>
+        <li><a href="#deployed-app">Deployed App</a></li>
+        <li><a href="#trello">Trello</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+    </ul>
+    <li><a href="#application-architecture">Application Architecture</a></li>
+    <ul>
+        <li><a href="#entity-relationship-diagram">Entity Relationship Diagram</a></li>
+        <li><a href="#wireframes">Wireframes</a></li>
+    </ul>
+    <li><a href="#unsolved-problems">Unsolved Problems</a></li>
+    <li><a href="#users-stories">Users Stories</a></li>
+    <li><a href="#general-approach">General Approach</a></li>
+    <li><a href="#overcoming-challenges">Overcoming Challenges</a></li>
+    <li><a href="#future-enhancements">Future Enhancements</a></li>
+  </ol>
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[![HTML5](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)](https://en.wikipedia.org/wiki/HTML)
 
-### `npm test`
+[![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)](https://en.wikipedia.org/wiki/CSS)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![BootStrap5](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://www.getbootstrap.com)
 
-### `npm run build`
+[![Material UI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)](https://mui.com/core/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[![React.js](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
 
-### `npm run eject`
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Team Members
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Zahid Allaulddin | [@zahidala](https://github.com/zahidala)
+- Jehan Ali | [@JEHANALIK](https://github.com/JEHANALIK)
+- Hajar Mohammed | [@hajrmohamed](https://github.com/hajrmohamed)
+- Nadia Husain | [@nadia-husain](https://github.com/nadia-husain)
 
-## Learn More
+## Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Deployed App
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Link to be added here
 
-### Code Splitting
+### Trello
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[Trello Link](https://trello.com/invite/b/9IzqZ8mT/ATTI8f1126078046018e82cc3b85f40fa229211AA0D3/project4)
 
-### Analyzing the Bundle Size
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Ensure you have the latest version of `npm` installed by running this command:
 
-### Making a Progressive Web App
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Installation
 
-### Advanced Configuration
+1. Get a free API Key for Travel Advisor [here](https://rapidapi.com/apidojo/api/travel-advisor)
+2. Get a free API Key for Google Maps [here](https://developers.google.com/maps/documentation/javascript/get-api-key)
+3. Get a free API Key for OpenWeatherMap [here](https://openweathermap.org/appid)
+4. Clone the required repos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```sh
+   git clone https://github.com/zahidala/project4-fe.git
+   ```
+    ```sh
+   git clone https://github.com/zahidala/project4BE.git
+   ```
+5. Install NPM packages
+    ```sh
+    npm install
+    ```
+6. Enter your API keys in an `.env` file
+   ```sh
+   REACT_APP_GOOGLE_MAPS_API_KEY='ENTER YOUR KEY HERE'
+   REACT_APP_TRAVEL_ADVISOR='ENTER YOUR KEY HERE'
+   REACT_APP_WEATHER_API_KEY='ENTER YOUR KEY HERE'
+   ```
 
-### Deployment
+## Application Architecture
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### <ins>Entity Relationship Diagram</ins>
 
-### `npm run build` fails to minify
+<!-- ![ERD]() -->
+Link here
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### <ins>Wireframes</ins>
+
+![HomePage](https://i.ibb.co/cwK23C7/React-App.png)
+
+## Unsolved Problems
+
+- [ ] Inability to display user data on calendar
+- [ ] Diffculty in implementing reviews
+
+## Users Stories
+
+- [x] As a User, I want to be able to search for locations
+- [x] As a User, I want to be able to look up places based on my current location or location that I searched for.
+- [x] As a User, I want to be able to sign up, sign in and logout
+- [x] As a User, I want to be able to view details of specfic places: hotels, attractions, restaurants.
+- [x] As a User, I want to be able to add places to my travel plan.
+- [x] As a User, I want to be able edit my travel plan
+- [x] As a User, I want to be able to view all places that were added to travel plan
+
+## General Approach
+
+As a team, we first decided the best way to apporoach this project was to think of an idea for a website. We also researched on what APIs would work best to get the data we need. Once we had figured that out we then focused on wireframes by drawing them on Figma. Later we used [draw.io](draw.io) to make the Entity Relationship Diagram. To keep track of our progress and divide the work between each other we used [Trello](https://trello.com/).
+
+## Overcoming Challenges
+
+- Grabbing the relevant data of the place directly from the API that after user clicks on Add To Plan to populate some fields of the form with the data needed.
+
+## Future Enhancements
+
+- Adding ability for the user to leave a review for a place on the view details page of each place.
+- Displaying added plan data on the calendar section of the website.
+
+<p align="right">(<a href="#readme-top">Back To Top</a>)</p>
