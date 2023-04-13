@@ -66,6 +66,7 @@
 - Jehan Ali | [@JEHANALIK](https://github.com/JEHANALIK)
 - Hajar Mohammed | [@hajrmohamed](https://github.com/hajrmohamed)
 - Nadia Husain | [@nadia-husain](https://github.com/nadia-husain)
+- Noor Al-Hajri | [@nooralhajri](https://github.com/nooralhajri)
 
 ## Getting Started
 
