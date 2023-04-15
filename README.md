@@ -105,7 +105,7 @@ Ensure you have the latest version of `npm` installed by running this command:
     npm install
     ```
 6. Enter your API keys in an `.env` file
-   ```sh
+   ```env
    REACT_APP_GOOGLE_MAPS_API_KEY='ENTER YOUR KEY HERE'
    REACT_APP_TRAVEL_ADVISOR='ENTER YOUR KEY HERE'
    REACT_APP_WEATHER_API_KEY='ENTER YOUR KEY HERE'
